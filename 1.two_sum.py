@@ -14,7 +14,7 @@ class Solution(object):
         for i in range(len(nums)):
             x = nums[i]
             if target - x in d:
-                return (d[target - x], i)
+                return d[target - x], i
             d[x] = i
 
 # O(n2)
