@@ -19,7 +19,7 @@ class Solution(object):
             i = -1
             while index >= 0 and i >= -len2:
                 
-                result[index] = result[index] + int(num2[i]) + carry
+                result[index] += int(num2[i]) + carry
                 carry = result[index] / 10
                 result[index] %= 10
                 
@@ -32,7 +32,7 @@ class Solution(object):
             i = -1
             while index >= 0 and i >= -len1:
                 
-                result[index] = result[index] + int(num1[i]) + carry
+                result[index] += int(num1[i]) + carry
                 carry = result[index] / 10
                 result[index] %= 10
                 
