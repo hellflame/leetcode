@@ -3,6 +3,7 @@
 # Easy
 
 # O(n)
+# 字典记录可与当前值匹配获得目标值的位置
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -18,6 +19,7 @@ class Solution(object):
             d[x] = i
 
 # O(n2)
+# 普通的依次加和比较
 class Solution(object):
     def twoSum(self, nums, target):
         """
