@@ -4,7 +4,7 @@
 
 # C Version
 """
-// O(kn)
+// O(kn) 时间复杂度与 K 成正比
 
 void rotate(int* nums, int numsSize, int k) {
     int tmp, i;
@@ -37,12 +37,44 @@ def rotate(nums, k):
         k -= 1
     # print nums
 
+def rotate_inner(nums, k):
+    # 原地排序，O(n)，时间复杂度与 K 无关
+    length = len(nums)
+    k = length - k % length    
+    for i in range(k / 2):
+        nums[i], nums[k - i - 1] = nums[k - i - 1], nums[i]
+
+    for i in range(k, k + (length - k) / 2):
+        nums[i], nums[length - i + k - 1] = nums[length - i + k - 1], nums[i]
+
+    for i in range(length / 2):
+        nums[i], nums[length - i - 1] = nums[length - i - 1], nums[i]
+
+    return nums
+
+
+def rotate_outer(nums, k):
+    k = len(nums) - k % len(nums)
+    return nums[k:] + nums[:k]
+
 
 if __name__ == '__main__':
     import time
+    length = 1000000
     start = time.time()
-    rotate(range(2048), 500)
-    print time.time() - start
+    rotate(range(length), 16)
+    print "rorate: \t", time.time() - start
+
+    start = time.time()
+    rotate_inner(range(length), 16)
+    print "rotate-inner: \t", time.time() - start
+
+    start = time.time()
+    rotate_outer(range(length), 16)
+    print "rotate-outer: \t", time.time() - start
+
+    
+    
 
 
 
